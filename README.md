@@ -20,3 +20,12 @@
 Плюс два enum'а: `PaymentType` (POINTS / DONATION) и `OrderStatus` (NEW / ACCEPTED / DONE / REJECTED).
 
 ## Архитектура
+```
+model → repository (interface) → repository.inmemory (impl) → service → controller.console
+```
+- **model** — POJO-сущности
+- **repository** — интерфейсы для доступа к данным
+- **repository.inmemory** — реализации на `ConcurrentHashMap`
+- **service** — бизнес-логика и валидации
+- **controller.console** — консольное меню
+- **App** — точка входа, собирает граф зависимостей
